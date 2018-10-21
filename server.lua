@@ -145,7 +145,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1000)
+		Citizen.Wait(5000)
 		local JobOnline = 0
 
 		local xPlayers = ESX.GetPlayers()
