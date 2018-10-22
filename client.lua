@@ -152,27 +152,32 @@ end)
 
 -------------------- Ta sönder telefon random --------------------
 
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(500)
-		if breakphone then
-			if IsPedRagdoll(GetPlayerPed(-1)) then
-				local randomBreak = math.random(100)
-				if randomBreak <= ragdollBreak then
-					TriggerServerEvent('loffe_olssontelefonservice:breakPhone', true) -- spräck telefonen
-					print('Telefonen gick sönder pga ragdoll, randomBreak = ' .. randomBreak)
-					while IsPedRagdoll(GetPlayerPed(-1)) do
-						Wait(500) -- så den bara gör det en gång när man ragdollar
-					end
-				else
-					print('Telefonen gick inte sönder random, randomBreak = ' .. randomBreak)
-					while IsPedRagdoll(GetPlayerPed(-1)) do
-						Wait(500) -- så den bara gör det en gång när man ragdollar
+AddEventHandler("playerSpawned", function(spawn)
+	print("Joinade servern, väntar 5 minuter innan telefonen kan gå sönder....")
+    Wait(300000)
+	print("Telefonen kan nu gå sönder")
+		Citizen.CreateThread(function()
+		while true do
+			Citizen.Wait(500)
+			if breakphone then
+				if IsPedRagdoll(GetPlayerPed(-1)) then
+					local randomBreak = math.random(100)
+					if randomBreak <= ragdollBreak then
+						TriggerServerEvent('loffe_olssontelefonservice:breakPhone', true) -- spräck telefonen
+						print('Telefonen gick sönder pga ragdoll, randomBreak = ' .. randomBreak)
+						while IsPedRagdoll(GetPlayerPed(-1)) do
+							Wait(500) -- så den bara gör det en gång när man ragdollar
+						end
+					else
+						print('Telefonen gick inte sönder random, randomBreak = ' .. randomBreak)
+						while IsPedRagdoll(GetPlayerPed(-1)) do
+							Wait(500) -- så den bara gör det en gång när man ragdollar
+						end
 					end
 				end
 			end
 		end
-	end
+	end)
 end)
 
 Citizen.CreateThread(function()
