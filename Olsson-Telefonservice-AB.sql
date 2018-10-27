@@ -4,7 +4,7 @@ SET @job_name_offduty = 'olssonoffduty';
 SET @job_label_offduty = 'Olssons Telefonservice AB - Ur tjänst';
 
 INSERT INTO `jobs` (name, label, whitelisted) VALUES
-  (@job_name, @job_Name_Caps, 1)
+  (@job_name, @job_Name_Caps, 1),
   (@job_name_offduty, @job_label_offduty, 1)
 ;
 
@@ -12,7 +12,7 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
   (@job_name, 0, 'testemployee', 'Provanställd', 125, '{}', '{}'),
   (@job_name, 1, 'employee', 'Anställd', 175, '{}', '{}'),
   (@job_name, 2, 'technician', 'Tekniker', 250, '{}', '{}'),
-  (@job_name, 3, 'boss', 'VD', 300, '{}', '{}')
+  (@job_name, 3, 'boss', 'VD', 300, '{}', '{}'),
   (@job_name_offduty, 0, 'testemployee', 'Provanställd', 50, '{}', '{}'),
   (@job_name_offduty, 1, 'employee', 'Anställd', 75, '{}', '{}'),
   (@job_name_offduty, 2, 'technician', 'Tekniker', 100, '{}', '{}'),
